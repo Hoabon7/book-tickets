@@ -1,0 +1,132 @@
+.sub-header {
+    width: 100%;
+    background-color: gray;
+}
+
+.v-flex {
+    display: flex;
+    flex-direction: row;
+    gap: 42px;
+    padding: 16px;
+}
+
+.container {
+    background-color: white;
+}
+
+.d-flex {
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    height: 70px;
+}
+
+.card-image img {
+    width: 70px;
+    height: 70px;
+}
+
+p.card-info-title {
+    font-size: 16px;
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+
+p.card-info-content {
+    font-size: 14px;
+    color: gray;
+}
+
+.list-tag-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.tag-content {
+    width: 358px;
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    background-color: #d8e9f4;
+}
+
+.tag-discript {
+    font-size: 18px;
+    color: #003c71;
+    font-weight: 700;
+}
+
+.tag-info {
+    margin: 10px;
+}
+
+.vote-star {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin-top: -8px;
+    font-size: 14px;
+}
+
+ul.list-info-item {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 0px;
+    gap: 0px 21px;
+}
+
+.list-info {
+    margin-left: -14px;
+    margin-top: 10px;
+}
+
+ul.list-info-item li {
+    font-size: 14px;
+    color: #26bed6;
+}
+
+span.rate-text {
+    color: #9fc43a;
+    font-weight: 700;
+}
+
+span.point {
+    background-color: #9fc43a;
+    padding: 1px 10px;
+    border-radius: 8px;
+    color: wheat;
+    font-weight: bold;
+}
+
+span.total-Evaluate {
+    color: gray;
+}
+
+.note {
+    color: red;
+    font-size: 14px;
+}
+
+.note p {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 5px;
+    background-color: #fce9e9;
+}
+
+
+.price-text {
+    font-size: 16px;
+    color: gray;
+}
+
+.price-tikket {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}

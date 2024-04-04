@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Bootstrap Example</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="./plugin/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="./plugin/js/bootstrap.bundle.min.js"></script>
+	<style>
+		.main-header {
+			background-color: #003c71;
+		}
+
+		.dropdown-menu {
+			background-color: #003c71;
+			border: none;
+		}
+
+		.dropdown-menu[data-bs-popper] {
+			left: auto;
+		}
+
+		.nav-link {
+			color: #fff !important;
+			font-size: 15px;
+			line-height: 20px;
+		}
+
+		body a {
+			font-weight: 500;
+		}
+
+		.navbar-toggler {
+			color: #fff;
+			margin: 0;
+			padding: 15px 15px;
+			font-size: 25px;
+			border: none;
+		}
+
+		.navbar-toggler:focus {
+			box-shadow: none;
+		}
+
+		.image-overview {
+			height: 390px;
+			background-size: cover;
+			background-position: center;
+		}
+
+		.v-margin-right-30 {
+			margin-right: 30px;
+		}
+
+		.fixed-top {
+			position: fixed;
+			top: 0;
+			width: 100%;
+			z-index: 1000;
+			transition: top 0.3s;
+			background-color: #fff;
+		}
+		.fixed-tabbar-top {
+			position: fixed;
+			top: 0;
+			width: 100%;
+			z-index: 1000;
+			transition: top 0.3s;
+			background-color: #dcdbe7 !important;
+		}
+
+		#nav-stick-top ul li {
+			margin-left: 0px;
+			min-width: 100px;
+			height: 40px;
+			text-align: center;
+		}
+
+		#nav-stick-top li a {
+			text-decoration: none;
+		}
+
+		.left-calendar ul.list-date {
+			display: flex;
+			list-style: none;
+			flex-wrap: nowrap;
+			padding-left: 0;
+		}
+
+		.left-calendar li {
+			text-align: left;
+		}
+
+		.left-calendar ul.list-date>li {
+			text-align: center;
+			border: 1px solid #ede4e4;
+			box-shadow: 0 0 3px 0 rgba(0, 0, 0, .15);
+			margin-right: 10px;
+			min-width: 65px;
+			height: 65px;
+			line-height: 62px;
+		}
+
+		.sidebar-content {
+			border: 1px solid #fff;
+			max-width: 360px;
+			height: 600px;
+		}
+
+		.sidebar-calendar {
+			display: flex;
+			flex-direction: row;
+		}
+
+		.right-calendar {
+			width: 100%;
+			height: 65px;
+			border: 1px solid #ede4e4;
+			box-shadow: 0 0 3px 0 rgba(0, 0, 0, .15);
+			position: relative;
+			border-radius: 4px;
+		}
+
+		.right-calendar i.fa.fa-calendar-times-o {
+			position: absolute;
+			top: 22px;
+			left: 16px;
+		}
+
+		.right-calendar span {
+			position: absolute;
+			left: 40px;
+			top: 19px;
+		}
+
+		.left-calendar ul li {
+			border-radius: 4px;
+		}
+
+		.sidebar-price-adult {
+			border: 1px solid #ede4e4;
+			border-radius: 4px;
+			box-shadow: 0 0 3px 0 rgba(0, 0, 0, .15);
+			height: 65px;
+			line-height: 62px;
+
+		}
+
+		.sidebar-price-adult {
+			position: relative;
+		}
+
+		span.adult {
+			position: absolute;
+			left: 5px;
+		}
+
+		span.price-adult {
+			position: absolute;
+			left: 95px;
+		}
+
+		.btn-group-action {
+			float: right;
+			width: 140px;
+		}
+
+		.col-xs-12.sidebar-price-child {
+			border: 1px solid #ede4e4;
+			margin-top: 23px;
+			height: 65px;
+			box-shadow: 0 0 3px 0 rgba(0, 0, 0, .15);
+			margin-top: 15px;
+			border-radius: 4px;
+			position: relative;
+		}
+
+		.info-child {
+			line-height: 62px;
+		}
+
+		span.child {
+			position: absolute;
+			left: 5px;
+		}
+
+		span.price-child {
+			position: absolute;
+			left: 95px;
+		}
+
+		.select-age-child {
+			position: absolute;
+			top: 70px;
+			width: 100%;
+			border-radius: 4px;
+			border: 1px solid #ede4e4;
+			box-shadow: 0 0 3px 0 rgba(0, 0, 0, .15);
+			display: none;
+		}
+
+		.btn-minus:active {
+			border: none;
+		}
+
+		.btn-add:active {
+			border: none;
+		}
+
+		ul.list-child-ages {
+			display: flex;
+			list-style: none;
+			flex-flow: wrap;
+			margin-left: -10px;
+			margin-bottom: 0;
+		}
+
+		ul.list-child-ages li {
+			width: 73px;
+			color: #ede4e4;
+		}
+
+		.list-child-ages select {
+			width: 94%;
+			padding: 6px;
+			border-radius: 5px !important;
+			margin-bottom: 10px;
+			border: 1px solid #ede4e4;
+			box-shadow: 0 0 3px 0 rgba(0, 0, 0, .15);
+
+		}
+
+		.select-child {
+			position: relative;
+		}
+
+		.icon-down {
+			position: absolute;
+			top: 10px;
+			left: 48px;
+			pointer-events: none;
+			/*click vao nhu k co gi, vẫn lấy sự kiện của button phía dưới*/
+			font-size: 20px;
+		}
+
+		.close-form-select.fa.fa-angle-double-up {
+			color: #27bed6;
+			float: right;
+			margin: 0px 25px;
+			background-color: #ebebeb;
+			padding: 7px;
+			border-radius: 4px;
+			margin-bottom: 5px;
+		}
+
+		button.btn.btn-minus {
+			margin-left: 15px;
+		}
+
+		span.amount-adult {
+			margin-left: 13px;
+		}
+
+		span.amount-child {
+			margin-left: 13px;
+		}
+
+		button.btn.btn-add {
+			margin-left: 13px;
+		}
+
+		button.btn.btn-contact {
+			border: 1px solid #f79321;
+			width: 100%;
+			font-weight: 500;
+			font-size: 20px;
+			color: #f79321;
+			white-space: nowrap;
+		}
+
+		button.btn.btn-order {
+			border: 1px solid #f79321;
+			width: 100%;
+			background-color: #f79321;
+			font-weight: 500;
+			font-size: 20px;
+			color: #fff;
+			white-space: nowrap;
+		}
+
+		.hidden {
+			display: none;
+		}
+
+		.col-6.btn-right {
+			padding-left: 6px;
+		}
+
+		.col-6.btn-left {
+			padding-right: 6px;
+		}
+
+		@media (min-width: 992px) {
+			.col-md-push-8 {
+				float: right;
+				width: 66.66666667%;
+			}
+
+			.col-md-4 {
+				width: 33.33333333%;
+			}
+		}
+
+		@media (max-width: 992px) {
+			.sidebar-content {
+				max-width: 100% !important;
+				/* position: fixed; */
+				top: 50px;
+				background-color: #fff;
+				z-index: 1;
+			}
+
+			.sidebar-calendar {
+				max-width: 95% !important;
+			}
+
+			.sidebar-price-adult {
+				max-width: 95% !important;
+			}
+
+			.sidebar-price-child {
+				max-width: 95% !important;
+			}
+
+			.sidebar-confirm {
+				max-width: 95% !important;
+			}
+		}
+
+	</style>
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="main-header">
+			<div class="container">
+				<nav class="navbar navbar-expand-sm">
+					<div class="container-fluid">
+						<a class="navbar-brand" href="javascript:void(0)">
+							<img src="https://res.ivivu.com/hotel/img/logo_tet_ivv_2024.svg?v=202401" alt="ivivu">
+						</a>
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+							data-bs-target="#mynavbar">
+							<span class="change-fa fa fa-bars"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="mynavbar">
+							<ul class="navbar-nav me-auto">
+								<li class="nav-item">
+									<a class="nav-link" href="javascript:void(0)">Khách sạn</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="javascript:void(0)">Tours</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="javascript:void(0)">Vé máy bay</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="javascript:void(0)">Vé vui chơi</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link dropdown" href="#" data-bs-toggle="dropdown">...</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item">
+											<a class="nav-link" href="javascript:void(0)">Bespoke</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="javascript:void(0)">Cẩm nang du lịch</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="javascript:void(0)">Tài khoản đặt tour</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="javascript:void(0)">giới thiệu</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="javascript:void(0)">Hỏi đáp</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="javascript:void(0)">Hỗ trợ</a>
+										</li>
+									</ul>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="content-wrapper">
+			<div class="container">
+				<div class="content-header">
+					<div class="list-url">
+						<a href="#" target="_blank" rel="noopener noreferrer">Trang chủ</a>
+						<a href="#" target="_blank" rel="noopener noreferrer">Nga</a>
+						<a href="#" target="_blank" rel="noopener noreferrer">Tour Nga 6N5Đ: Moscow - Saint
+							Petersburg</a>
+					</div>
+					<div class="title-tour">
+						<h1>Tour Nga 6N5Đ: Moscow - Saint Petersburg</h1>
+					</div>
+				</div>
+				<div class="content">
+					<div class="row" style="flex-direction: row-reverse; justify-content: space-between;">
+						<div id="tab-stick-top" class=" col-xs-12 col-sm-12 col-lg-4 col-md-push-4 sidebar-content ">
+							<div class="col-xs-12 sidebar-main-conten">
+								<div class="col-xs-12 sidebar-tourheader">
+									<h3>Lịch Trình và Giá Tour</h3>
+									<p>Chọn Lịch Trình và Xem Giá:</p>
+								</div>
+								<div class="col-xs-12 sidebar-calendar">
+									<div class="left-calendar">
+										<ul class="list-date">
+											<li>07/04</li>
+											<li>14/04</li>
+											<li>21/04</li>
+										</ul>
+									</div>
+									<div class="right-calendar">
+										<i class="fa fa-calendar-times-o"></i>
+										<span>Tat ca</span>
+									</div>
+								</div>
+								<div class="col-xs-12 sidebar-price-adult">
+									<span class="adult">Nguoi lon</span>
+									<span class="price-adult">x 31.990.000</span>
+									<div class=" btn-group-action">
+										<button type="button" class="btn btn-minus"><i class="fa fa-minus"></i></button>
+										<span class="amount-adult">2</span>
+										<button type="button" class="btn btn-add"><i class="fa fa-plus"></i></button>
+									</div>
+								</div>
+								<div class="col-xs-12 sidebar-price-child">
+									<div class="info-child">
+										<span class="child">Tre em</span>
+										<span class="price-child">x 31.990.000</span>
+										<div class=" btn-group-action">
+											<button type="button" class="btn btn-minus"><i
+													class="fa fa-minus"></i></button>
+											<span class="amount-child">2</span>
+											<button type="button" class="btn btn-add"><i
+													class="fa fa-plus"></i></button>
+										</div>
+									</div>
+									<div class="select-age-child">
+										<p>Chon do tuoi tre em:</p>
+										<ul class="list-child-ages">
+											<li>
+												<div class="select-child">
+													<select name="" id="" class="form-control">
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+														<option value="6">6</option>
+														<option value="7">7</option>
+													</select>
+													<span class="icon-down fa fa-angle-down"></span>
+												</div>
+											</li>
+											<li>
+												<div class="select-child">
+													<select name="" id="" class="form-control">
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+														<option value="6">6</option>
+														<option value="7">7</option>
+													</select>
+													<span class="icon-down fa fa-angle-down"></span>
+												</div>
+											</li>
+											<li>
+												<div class="select-child">
+													<select name="" id="" class="form-control">
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+														<option value="6">6</option>
+														<option value="7">7</option>
+													</select>
+													<span class="icon-down fa fa-angle-down"></span>
+												</div>
+											</li>
+											<li>
+												<div class="select-child">
+													<select name="" id="" class="form-control">
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+														<option value="6">6</option>
+														<option value="7">7</option>
+													</select>
+													<span class="icon-down fa fa-angle-down"></span>
+												</div>
+											</li>
+											<li>
+												<div class="select-child">
+													<select name="" id="" class="form-control">
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+														<option value="6">6</option>
+														<option value="7">7</option>
+													</select>
+													<span class="icon-down fa fa-angle-down"></span>
+												</div>
+											</li>
+											<li>
+												<div class="select-child">
+													<select name="" id="" class="form-control">
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+														<option value="6">6</option>
+														<option value="7">7</option>
+													</select>
+													<span class="icon-down fa fa-angle-down"></span>
+												</div>
+											</li>
+											<li>
+												<div class="select-child">
+													<select name="" id="" class="form-control">
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+														<option value="6">6</option>
+														<option value="7">7</option>
+													</select>
+													<span class="icon-down fa fa-angle-down"></span>
+												</div>
+											</li>
+										</ul>
+										<div class="close-form-select fa fa-angle-double-up">
+
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-12 sidebar-contact">
+									<img src="https://www.ivivu.com/du-lich/content/img/info.svg" alt="">
+									<span>Liên hệ để xác nhận chỗ</span>
+								</div>
+								<div class="col-xs-12 sidebar-price-total">
+									<span>Tổng Giá Tour</span>
+									<span>92.771.000</span>
+									<span>VND</span>
+								</div>
+								<div class="col-xs-12 sidebar-confirm ">
+									<div class="row">
+										<div class="col-6 btn-left">
+											<button type="button" class="btn btn-contact">Liên hệ tư vấn</button>
+										</div>
+										<div class="col-6 btn-right">
+											<button type="button" class="btn btn-order">Đặt Tour ngay</button>
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<div class="sidebar-subcontent">
+								<div class="row">
+									<div class="col-6"><span><img
+												src="https://www.ivivu.com/du-lich/content/img/service-check.svg"
+												alt="">Bảo hiểm</span></div>
+									<div class="col-6"><span><img
+												src="https://www.ivivu.com/du-lich/content/img/service-check.svg"
+												alt="">Bữa ăn</div>
+									<div class="col-6"><span><img
+												src="https://www.ivivu.com/du-lich/content/img/service-check.svg"
+												alt="">Hướng dẫn viên</span></div>
+									<div class="col-6"><span><img
+												src="https://www.ivivu.com/du-lich/content/img/service-check.svg"
+												alt="">Khách Sạn 4*</span></div>
+									<div class="col-6"><span><img
+												src="https://www.ivivu.com/du-lich/content/img/service-check.svg"
+												alt="">Vé máy bay</span></div>
+									<div class="col-6"><span><img
+												src="https://www.ivivu.com/du-lich/content/img/service-check.svg"
+												alt="">Vé tham quan</span></div>
+									<div class="col-6"><span><img
+												src="https://www.ivivu.com/du-lich/content/img/service-check.svg"
+												alt="">Xe đưa đón</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-md-push-8 main-content ">
+							<div class="col-xs-12" id="detail-overview">
+								<div class="col-xs-12 image-overview"
+									style="background-image: url('https://cdn2.ivivu.com/2024/02/07/12/nha-tho-thanh-isaac-moscow-ivv-750x390.gif');">
+								</div>
+								<div class="col-xs-12 info-overview">
+									<span class="item-location v-margin-right-30"><i class="fa fa-map-marker"></i>Hồ Chí
+										Minh</span>
+									<span class="item-date v-margin-right-30"><i class="fa fa-calendar-times-o"></i>6
+										Ngày 5 Đêm</span>
+									<span class="item-transport v-margin-right-30">Phương tiện <i
+											class="fa fa-plane"></i><i class="fa fa-bus"></i></span>
+									<span class="code-tour">Mã Tour: TO3101</span>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 youtube-extend">
+								<div class="row">
+									<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 youtube-thumb">
+										<img src="https://img.youtube.com/vi/_V0hvU4d7-o/default.jpg" alt="">
+									</div>
+									<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 info-descript">
+										<span class="note-discript">note</span>
+										<div class="youtube-discribe">Video về
+											Tour Nga 6N5Đ: Moscow - Saint Petersburg</div>
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 youtube-iframe">
+									<div class="title-youtube">Video về Tour Nga 6N5Đ: Moscow - Saint Petersburg</div>
+									<iframe src="https://www.youtube.com/embed/_V0hvU4d7-o?autoplay=1" frameborder="0"
+										style="width: 100%; height: 500px;"></iframe>
+								</div>
+							</div>
+							<div class="col-xs-12" id="amount-customer-order"></div>
+							<div class="col-xs-12 overflow-x-scroll" id="nav-stick-top">
+								<ul class="navbar-nav mx-auto flex-row">
+									<li><a class="" href="#detail-info-visa">Section 1</a></li>
+									<li><a class="" href="#detail-info-guide">Section 2</a></li>
+									<li><a class="" href="#detail-info-cost">Section 3</a></li>
+									<li><a class="" href="#section4">Section 4</a></li>
+									<li><a class="" href="#section5">Section 5</a></li>
+									<li><a class="" href="#section6">Section 6</a></li>
+									<li><a class="" href="#section6">Section 7</a></li>
+									<li><a class="" href="#section6">Section 8</a></li>
+								</ul>
+							</div>
+							<div class="col-xs-12" id="detail-tour">
+								<div class="tour-detail-1">
+									<h3>Moscow - Saint Petersburg</h3>
+									<div class="tour-detail-conten">
+										Khám phá vẻ đẹp huyền bí của Nga trong 6 ngày với tour Moscow và Saint
+										Petersburg, trải nghiệm văn hóa phong phú qua các địa điểm nổi tiếng như Điện
+										Kremlin, Cung điện Mùa Hè. Tận hưởng sự tiện nghi với dịch vụ hàng không đẳng
+										cấp, chỗ ở khách sạn 4 sao và các bữa ăn ngon miệng. Một hành trình đầy ấn tượng
+										với giá cả phải chăng, dành cho mọi lứa tuổi, kỳ nghỉ này hứa hẹn mang lại cho
+										bạn những kỷ niệm không thể quên. Cùng iVIVU khám phá ngay!
+									</div>
+								</div>
+								<div class="tour-detail-2">
+									<h3>Những trải nghiệm thú vị trong chương trình</h3>
+									<div class="tour-detail-conten">
+										<p>-Tham quan những kiệt tác kiến trúc và nghệ thuật tại Điện Krempn.</p>
+										<p>-Đến việc chiêm ngưỡng vẻ đẹp lịch sử và văn hóa tại Quảng trường Đỏ và Cung
+											điện Mùa Hè.</p>
+										<p>-khám phá bảo tàng Hermitage với bộ sưu tập nghệ thuật vô giá.</p>
+										<p>-Dạo chơi trong cảnh quan hùng vĩ của Saint Petersburg, mở ra cơ hội chụp
+											hình và khám phá không giới hạn.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12" id="detail-schedual">
+								<div class="detail-schedual-detail">
+
+								</div>
+							</div>
+							<div class="col-xs-12" id="detail-info-visa">test1</div>
+							<div class="col-xs-12" id="detail-info-guide">test12</div>
+							<div class="col-xs-12" id="detail-info-cost">test13</div>
+							<div class="col-xs-12" id="detail-term-regulation">test14</div>
+							<div class="col-xs-12" id="list-term-history">test15</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="main-footer">
+			<div class="container">
+
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
+
+<script>
+	let btn = document.querySelector(".navbar-toggler");
+	let icon = btn.querySelector(".fa-bars");
+
+	btn.onclick = function () {
+		if (icon.classList.contains("fa-bars")) {
+			icon.classList.replace("fa-bars", "fa-times");
+		}
+		else {
+			icon.classList.replace("fa-times", "fa-bars");
+		}
+	}
+
+	window.addEventListener('scroll', function () {
+		const navbar = document.getElementById('nav-stick-top');
+		const tabbar = document.getElementById('tab-stick-top');
+		const scrollPosition = window.scrollY;
+
+		if (scrollPosition > 200) {
+			navbar.classList.add('fixed-top');
+		} else {
+			navbar.classList.remove('fixed-top');
+			tabbar.classList.remove('fixed-tabbar-top');
+		}
+	});
+
+	function getPageWidth() {
+		var pageWidth = window.innerWidth;
+		const tabbar = document.getElementById('tab-stick-top');
+		
+		if (pageWidth > 768 && pageWidth < 992) {
+			//tabbar.classList.add('fixed-tabbar-top');
+
+		} else {
+			tabbar.classList.remove('fixed-tabbar-top');
+		}
+		
+	}
+
+	window.addEventListener('resize', getPageWidth);
+	getPageWidth();
+</script>

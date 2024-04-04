@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="./plugin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="./plugin/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .space-between {
+            justify-content: space-between;
+        }
+        .v-flex {
+            display: flex;
+            align-items: center;
+        }
+        .v-field-content {
+            height: 59px;
+        }
+        p.v-field-text {
+            margin-bottom: 4px;
+            font-size: 16px;
+        }
+        p.v-field-description {
+            margin-bottom: 4px;
+            font-size: 14px;
+            color: gray;
+        }
+        .choose-tikket {
+            width: 100%;
+        }
+        .v-field-thumail {
+            margin-right: 15px;
+        }
+
+
+        @media (min-width: 1200px) {
+            .container {
+                width: 1170px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="main-header">
+            <div class="container">
+                <nav class="navbar navbar-expand-sm">
+
+                </nav>
+            </div>
+        </div>
+        <div class="sub-header">
+            <div class="container col-xs-12">
+                <div class="d-flex space-between col-xs-12">
+                    <div class="choose-tikket v-flex">
+                        <div class="v-field-thumail">
+                            <img src="https://res.ivivu.com/flight/inbound/images/icons/plane.svg" alt="">
+                        </div>
+                        <div class="v-field-content ">
+                            <p class="v-field-text">Chọn chuyến bay phù hợp nhất</p>
+                            <p class="v-field-description">Dễ dàng so sánh giá giữa các hãng hàng không</p>
+                        </div>
+                    </div>
+                    <div class="choose-tikket v-flex col-xs-12">
+                        <div class="v-field-thumail">
+                            <img src="https://res.ivivu.com/flight/inbound/images/icons/travel_ticket.svg" alt="">
+                        </div>
+                        <div class="v-field-content">
+                            <p class="v-field-text">Đặt vé nhanh chóng, dễ dàng</p>
+                            <p class="v-field-description">Mua vé máy bay dễ dàng, xuất vé tức thời</p>
+                        </div>
+                    </div>
+                    <div class="choose-tikket v-flex col-xs-12">
+                        <div class="v-field-thumail">
+                            <img src="https://res.ivivu.com/flight/inbound/images/icons/give-money.svg" alt="">
+                        </div>
+                        <div class="v-field-content">
+                            <p class="v-field-text">Thanh toán an toàn</p>
+                            <p class="v-field-description">Nhiều hình thức thanh toán linh hoạt</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="container">
+                <div class="title-best-tiket-price">
+                    <h2>Giá vé Nội địa tốt nhất</h2>
+                    <p>Giá tốt nhất từ VietnamAirlines, Bamboo, Vietjet...</p>
+                </div>
+                <div class="list-titket">
+                    <div class="col-xs-12 no-padding">
+                        
+                    </div>
+                    <div class="col-xs-12 no-padding">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-footer">
+            <div class="container">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    let btn = document.querySelector(".navbar-toggler");
+    let icon = btn.querySelector(".fa-bars");
+
+    btn.onclick = function () {
+        if (icon.classList.contains("fa-bars")) {
+            icon.classList.replace("fa-bars", "fa-times");
+        }
+        else {
+            icon.classList.replace("fa-times", "fa-bars");
+        }
+    }
+
+    window.addEventListener('scroll', function () {
+        const navbar = document.getElementById('nav-stick-top');
+        const tabbar = document.getElementById('tab-stick-top');
+        const scrollPosition = window.scrollY;
+
+        if (scrollPosition > 200) {
+            navbar.classList.add('fixed-top');
+        } else {
+            navbar.classList.remove('fixed-top');
+            tabbar.classList.remove('fixed-tabbar-top');
+        }
+    });
+
+    function getPageWidth() {
+        var pageWidth = window.innerWidth;
+        const tabbar = document.getElementById('tab-stick-top');
+
+        if (pageWidth > 768 && pageWidth < 992) {
+            //tabbar.classList.add('fixed-tabbar-top');
+
+        } else {
+            tabbar.classList.remove('fixed-tabbar-top');
+        }
+
+    }
+
+    window.addEventListener('resize', getPageWidth);
+    getPageWidth();
+</script>
